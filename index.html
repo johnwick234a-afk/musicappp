@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Aura - Music</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline-variant": "#cfc4c5",
+            "on-background": "#1b1b1b",
+            "surface-container-high": "#e8e8e8",
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#c6c6c6",
+            "inverse-surface": "#303030",
+            "inverse-primary": "#c6c6c6",
+            "on-error": "#ffffff",
+            "surface-dim": "#dadada",
+            "surface-container-lowest": "#ffffff",
+            "inverse-on-surface": "#f1f1f1",
+            "background": "#f9f9f9",
+            "on-tertiary-container": "#848484",
+            "surface": "#f9f9f9",
+            "surface-bright": "#f9f9f9",
+            "secondary-fixed": "#e4e2e2",
+            "on-tertiary-fixed-variant": "#474747",
+            "surface-variant": "#e2e2e2",
+            "tertiary-fixed": "#e2e2e2",
+            "on-primary-fixed": "#1b1b1b",
+            "on-tertiary-fixed": "#1b1b1b",
+            "on-tertiary": "#ffffff",
+            "outline": "#7e7576",
+            "surface-container-highest": "#e2e2e2",
+            "error": "#ba1a1a",
+            "secondary-container": "#e1dfdf",
+            "surface-container": "#eeeeee",
+            "primary": "#000000",
+            "error-container": "#ffdad6",
+            "primary-container": "#1b1b1b",
+            "secondary-fixed-dim": "#c7c6c6",
+            "tertiary": "#000000",
+            "surface-container-low": "#f3f3f3",
+            "secondary": "#5e5e5e",
+            "on-surface-variant": "#4c4546",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#464747",
+            "on-secondary": "#ffffff",
+            "on-surface": "#1b1b1b",
+            "tertiary-fixed-dim": "#c6c6c6",
+            "primary-fixed": "#e2e2e2",
+            "on-primary-container": "#848484",
+            "on-secondary-fixed": "#1b1c1c",
+            "on-secondary-container": "#626262",
+            "tertiary-container": "#1b1b1b",
+            "surface-tint": "#5e5e5e",
+            "on-primary-fixed-variant": "#474747"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "xl": "40px",
+            "lg": "24px",
+            "unit": "4px",
+            "md": "16px",
+            "xs": "4px",
+            "margin-mobile": "20px",
+            "gutter": "16px",
+            "sm": "8px",
+            "margin-desktop": "64px"
+          },
+          "fontFamily": {
+            "headline-sm": ["Manrope"],
+            "label-caps": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-lg": ["Manrope"],
+            "body-md": ["Inter"],
+            "display-md": ["Manrope"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    
+    @keyframes slideUpFade {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-slide-up-fade {
+      animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-black to-white text-on-background antialiased min-h-screen font-body-md pt-16 pb-24 md:pb-0">
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
