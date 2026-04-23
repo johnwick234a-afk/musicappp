@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Library - Aura</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "outline-variant": "#cfc4c5",
+                "on-background": "#1b1b1b",
+                "surface-container-high": "#e8e8e8",
+                "on-primary": "#ffffff",
+                "primary-fixed-dim": "#c6c6c6",
+                "inverse-surface": "#303030",
+                "inverse-primary": "#c6c6c6",
+                "on-error": "#ffffff",
+                "surface-dim": "#dadada",
+                "surface-container-lowest": "#ffffff",
+                "inverse-on-surface": "#f1f1f1",
+                "background": "#f9f9f9",
+                "on-tertiary-container": "#848484",
+                "surface": "#f9f9f9",
+                "surface-bright": "#f9f9f9",
+                "secondary-fixed": "#e4e2e2",
+                "on-tertiary-fixed-variant": "#474747",
+                "surface-variant": "#e2e2e2",
+                "tertiary-fixed": "#e2e2e2",
+                "on-primary-fixed": "#1b1b1b",
+                "on-tertiary-fixed": "#1b1b1b",
+                "on-tertiary": "#ffffff",
+                "outline": "#7e7576",
+                "surface-container-highest": "#e2e2e2",
+                "error": "#ba1a1a",
+                "secondary-container": "#e1dfdf",
+                "surface-container": "#eeeeee",
+                "primary": "#000000",
+                "error-container": "#ffdad6",
+                "primary-container": "#1b1b1b",
+                "secondary-fixed-dim": "#c7c6c6",
+                "tertiary": "#000000",
+                "surface-container-low": "#f3f3f3",
+                "secondary": "#5e5e5e",
+                "on-surface-variant": "#4c4546",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed-variant": "#464747",
+                "on-secondary": "#ffffff",
+                "on-surface": "#1b1b1b",
+                "tertiary-fixed-dim": "#c6c6c6",
+                "primary-fixed": "#e2e2e2",
+                "on-primary-container": "#848484",
+                "on-secondary-fixed": "#1b1c1c",
+                "on-secondary-container": "#626262",
+                "tertiary-container": "#1b1b1b",
+                "surface-tint": "#5e5e5e",
+                "on-primary-fixed-variant": "#474747"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "xl": "40px",
+                "lg": "24px",
+                "unit": "4px",
+                "md": "16px",
+                "xs": "4px",
+                "margin-mobile": "20px",
+                "gutter": "16px",
+                "sm": "8px",
+                "margin-desktop": "64px"
+        },
+        "fontFamily": {
+                "headline-sm": [
+                        "Manrope"
+                ],
+                "label-caps": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Manrope"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "display-md": [
+                        "Manrope"
+                ]
+        },
+        "fontSize": {
+                "headline-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-caps": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "11px",
+                        {
+                                "lineHeight": "14px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-md": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+  .ambient-shadow {
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.04);
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+  
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-black to-white text-on-background antialiased min-h-screen pb-24">
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center h-16 px-6 bg-zinc-900/40 backdrop-blur-md border-none flat no shadows">
+<button class="hover:opacity-70 transition-opacity active:scale-98 transition-transform">
+<span class="material-symbols-outlined text-white">account_circle</span>
+</button>
+<h1 class="font-['Manrope'] text-sm tracking-wide uppercase text-xl font-extrabold tracking-tighter text-white">Aura</h1>
+<button class="hover:opacity-70 transition-opacity active:scale-98 transition-transform">
+<span class="material-symbols-outlined text-white">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-screen-md mx-auto pt-24 px-margin-mobile md:px-margin-desktop">
+<header class="mb-lg animate-fade-in-up">
+<h2 class="font-display-md text-display-md text-white drop-shadow-sm">Your Library</h2>
+</header>
+<!-- Pinned / Quick Access - Bento Style -->
+<section class="grid grid-cols-1 sm:grid-cols-2 gap-md mb-xl">
+<!-- Liked Songs Card -->
+<div class="flex items-center gap-md p-md bg-white/60 backdrop-blur-md border border-white/30 rounded-xl ambient-shadow hover:bg-white/80 cursor-pointer group animate-fade-in-up delay-100 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+<div class="w-14 h-14 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-400 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div>
+<h3 class="font-body-md text-body-md text-zinc-900 font-semibold group-hover:text-primary transition-colors">Liked Songs</h3>
+<p class="font-label-sm text-label-sm text-zinc-600 mt-xs">248 tracks</p>
+</div>
+</div>
+<!-- Downloaded Music Card -->
+<div class="flex items-center gap-md p-md bg-white/60 backdrop-blur-md border border-white/30 rounded-xl ambient-shadow hover:bg-white/80 cursor-pointer group animate-fade-in-up delay-200 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+<div class="w-14 h-14 rounded-lg bg-surface-container-highest flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-zinc-900">download_for_offline</span>
+</div>
+<div>
+<h3 class="font-body-md text-body-md text-zinc-900 font-semibold group-hover:text-primary transition-colors">Downloaded Music</h3>
+<p class="font-label-sm text-label-sm text-zinc-600 mt-xs">1.2 GB available</p>
+</div>
+</div>
+</section>
+<!-- Artists You Follow - Horizontal Scroll -->
+<section class="mb-xl animate-fade-in-up delay-300">
+<div class="flex justify-between items-end mb-md">
+<h3 class="font-headline-sm text-headline-sm text-zinc-900">Artists You Follow</h3>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-lg pb-sm snap-x">
+<!-- Artist Item -->
+<div class="flex flex-col items-center gap-sm min-w-[88px] snap-start cursor-pointer group">
+<img class="w-20 h-20 rounded-full object-cover shadow-[0_8px_16px_rgba(0,0,0,0.08)] group-hover:scale-105 group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out" data-alt="close up portrait of a male musician bathed in moody blue and purple stage lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmKEa0k6HTs8itTZ2XfqP2mWKVHRPanNDKDnGEPt7Msu_nB-2AffMUZlLMyzXVrdFbAlWiY1KmpRhsH7kyFUcfufx8Qji5s9OI8BlC07TrdCNk8IlBJ6DLvaVTq57x74dJCOkOYPWY2fQSVK0XPN8a3BwJgSXkBPx009KCaYkGFO36WY6yAHyej3V1U3YMScRHLRaGJwAMyZ7l3rVE1ldBcBdsWVREwaY8I_DPiAwHRv101cVynO8Se2jNJIszjhT3jsn_LaoRw6s"/>
+<span class="font-label-sm text-label-sm text-zinc-800 text-center w-full truncate font-medium">Tame Impala</span>
+</div>
+<!-- Artist Item -->
+<div class="flex flex-col items-center gap-sm min-w-[88px] snap-start cursor-pointer group">
+<img class="w-20 h-20 rounded-full object-cover shadow-[0_8px_16px_rgba(0,0,0,0.08)] group-hover:scale-105 group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out" data-alt="black and white portrait of a female singer with vintage microphone in a recording studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE5YuUDtEdFIBMnPj1otj8aIKsGlfeDesE_ExVf1dTxVrUDQ3fbnPxSrlFaDh9JdRapLs2a7Qps4zlWd4hBsewcDbqH6hr-d4jtru0RQTgMSccmkbK4k9e3mSbpc46wYzYinol-oAQTVet_giF4INRrjJ1KzLhIOM91QjUcvLvG-Q0tiJDEFe3k7_0SyMNrzIRJaH_TTbdxXvFcVYPHrjrKj6rOKFFmxqdmnkYWnKb1vMTXPskCECWgjbXtdUk3NO-czzx31fvr-s"/>
+<span class="font-label-sm text-label-sm text-zinc-800 text-center w-full truncate font-medium">Lana Del Rey</span>
+</div>
+<!-- Artist Item -->
+<div class="flex flex-col items-center gap-sm min-w-[88px] snap-start cursor-pointer group">
+<img class="w-20 h-20 rounded-full object-cover shadow-[0_8px_16px_rgba(0,0,0,0.08)] group-hover:scale-105 group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out" data-alt="silhouette of a DJ performing at a music festival with bright yellow and orange background lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiJfXghvl597IAEBeKMpUT2lmYyw3S4nH3mqk1HhNkeirL2kZ0gOTnkTVcEWz43wsNmKAdgOqWc7OYy409Htokw1Ex8ig7v4GIXU6WXWEHBdTon_lr_IcPPpuJhUenNyAI0vDW1jAdnbgigkYGz_QZvHCc7Yv7q8JSFTTw6ywrSbMGKjEavm75KLU2XL1aNwGuZoqsWdRxmRJDqmghdMRdEf08BWzy2hIlE0c7mwdhz6iMQV-FbhEAmfs2XxuLpkEAoJ3hBGo-Gf0"/>
+<span class="font-label-sm text-label-sm text-zinc-800 text-center w-full truncate font-medium">Fred again..</span>
+</div>
+<!-- Artist Item -->
+<div class="flex flex-col items-center gap-sm min-w-[88px] snap-start cursor-pointer group">
+<img class="w-20 h-20 rounded-full object-cover shadow-[0_8px_16px_rgba(0,0,0,0.08)] group-hover:scale-105 group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out" data-alt="abstract flowing gradient of soft pinks and warm oranges representing an indie pop artist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzaJEFWgUzjNEnXfq_wz8_E6vkIQ-hVMBp-qsve0iTxXQpa3L6hsqTuSAxZQd8kfL5ja0va1FsE1IN4GSG0mg0dxxFJZB8SxsPoztmSsA4K4ayOisMLPq31lRCny0eyYkoNgUU_LyAzpEUGnQhhLwPVVfG52NEcRv17UJ7E6-1PMyT3EymlPpJymqQcRpPY_fm3DOu-BFgVR_yc3CmWC9fKSFZxR-M36EAiV2odpnIbs8p9s07vQLiybj9PRiKeTIxfG9Fjj0E438"/>
+<span class="font-label-sm text-label-sm text-zinc-800 text-center w-full truncate font-medium">SZA</span>
+</div>
+<!-- Artist Item -->
+<div class="flex flex-col items-center gap-sm min-w-[88px] snap-start cursor-pointer group">
+<img class="w-20 h-20 rounded-full object-cover shadow-[0_8px_16px_rgba(0,0,0,0.08)] group-hover:scale-105 group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out" data-alt="moody portrait of electronic music producer in a studio with green neon accent lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQo0nNPAoARsWcQWK07GWENKJpg8z4WMqxvJmXqVm9zYOGo57dNhP5dyLG1TaAmTbOTkyRNSFoVRRVDq5NJkIC5kgClstGGrfvaljvWQEV63vxjAs3BKftN5XNG2c1Qkaq55sk2YSFtsYseUjz9DQnHReCVNtuIkl3OLsyEcOF1EJemKQiu2gO8ekIKrIFIk5E-u58cvoBr1KR5N24B49xQ6uzvlVQsIPu557gEcmLIj9vYChsYpbGxBwvdRwFB99U5rab4B5VbkY"/>
+<span class="font-label-sm text-label-sm text-zinc-800 text-center w-full truncate font-medium">James Blake</span>
+</div>
+</div>
+</section>
+<!-- Your Playlists - Minimal List -->
+<section class="animate-fade-in-up delay-400">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-sm text-headline-sm text-zinc-900">Your Playlists</h3>
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/5 transition-colors">
+<span class="material-symbols-outlined text-zinc-600" style="font-size: 20px;">add</span>
+</button>
+</div>
+<div class="flex flex-col gap-unit">
+<!-- Playlist Item -->
+<div class="flex items-center gap-md p-sm -mx-sm rounded-lg bg-white/40 backdrop-blur-sm border border-white/20 hover:bg-white/60 ambient-shadow cursor-pointer group hover:scale-[1.01] hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-300">
+<img class="w-[52px] h-[52px] rounded-DEFAULT object-cover shadow-[0_4px_10px_rgba(0,0,0,0.05)]" data-alt="abstract fluid shapes in vibrant teal and magenta colors on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQAudDALlUIxj0HbuuqYWmicMjO7deMiqU567Yrwja-AL2a1bdtpkKEDyP8bIkU6iKbZv8AxaWUne4hL8BDHNex81sb_0GyXih3jnsT6CKmXheH5xYcb-tKiyfmiCm9MkwX3K1-zcAYSBveDZZmTRvaz3KT9KcRW3S4H3y1d5OogKkmd6yBBJyf8jhmThWdHxOEEW3zbJcquoMws9fznyqxC9VB2P6VkzwJ5du-j-8QiVIfRClgMpfA-Qq-K3wRePrYSWi6PrhV9s"/>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-zinc-900 truncate group-hover:text-primary transition-colors">Focus Flow</h4>
+<p class="font-label-sm text-label-sm text-zinc-600 truncate mt-xs">Ambient &amp; Lo-Fi • Aura</p>
+</div>
+<button class="w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-zinc-900" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</button>
+</div>
+<!-- Playlist Item -->
+<div class="flex items-center gap-md p-sm -mx-sm rounded-lg bg-white/40 backdrop-blur-sm border border-white/20 hover:bg-white/60 ambient-shadow cursor-pointer group hover:scale-[1.01] hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-300">
+<img class="w-[52px] h-[52px] rounded-DEFAULT object-cover shadow-[0_4px_10px_rgba(0,0,0,0.05)]" data-alt="crowd at a live concert with hands raised silhouetted against bright stage lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAixN2apoIhckMrvh5csbdfW9P393i7sFVy0wKr-jf_AN89eQqSqJvEjm-pfzQswOS_Z166Ec70TtlPK9M1Od6z5EceG4NPl1i7TR3Cg1pXFJOHxqlVxe32iOk-VULYGUWkgW00oM_mb-akFxMR2jM9FSTgSnrridnJHQZnkIPyLHYjdKAHO1wBBKN36VzN2bP8L1DirOmz4fzNgWWQY8r8lNgzwdkoX0FqFGTJeDSm_UrOONWZ-dyWWVCU14RJ1dIXTzrV7rgKTE"/>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-zinc-900 truncate group-hover:text-primary transition-colors">Weekend Anthems</h4>
+<p class="font-label-sm text-label-sm text-zinc-600 truncate mt-xs">Pop &amp; Dance • By You</p>
+</div>
+<button class="w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-zinc-900" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</button>
+</div>
+<!-- Playlist Item -->
+<div class="flex items-center gap-md p-sm -mx-sm rounded-lg bg-white/40 backdrop-blur-sm border border-white/20 hover:bg-white/60 ambient-shadow cursor-pointer group hover:scale-[1.01] hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-300">
+<img class="w-[52px] h-[52px] rounded-DEFAULT object-cover shadow-[0_4px_10px_rgba(0,0,0,0.05)]" data-alt="misty pine forest at dawn with cool blue tones creating a calm and moody atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEo2bV2uBMq5QQR6zKp9iqa5B0PMYhtnWbSBjZALBU4FMRkhFUrIPttKF0pmZX7fWuv5uOzpU4K11X15qP_Gpbx5FS4HDDMLKPxcU-oYQCM7m0Wq2D_Qn-BaDlYrOTvLxm9q-Gs8hocncmcqzsTjrVlV-eVplQPsHoPw5GOuu6prFg9aTYrllR7bOpOKB4Q751wmwC15yLpq-ZSG_3BpoEVgrly00wKr7upjaHARlszZ5SlYi6Jdt2Ql02BVGHCnSWcIoaM7qzrsk"/>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-zinc-900 truncate group-hover:text-primary transition-colors">Late Night Drives</h4>
+<p class="font-label-sm text-label-sm text-zinc-600 truncate mt-xs">Indie Electronic • By You</p>
+</div>
+<button class="w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-zinc-900" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</button>
+</div>
+<!-- Playlist Item -->
+<div class="flex items-center gap-md p-sm -mx-sm rounded-lg bg-white/40 backdrop-blur-sm border border-white/20 hover:bg-white/60 ambient-shadow cursor-pointer group hover:scale-[1.01] hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-300">
+<img class="w-[52px] h-[52px] rounded-DEFAULT object-cover shadow-[0_4px_10px_rgba(0,0,0,0.05)]" data-alt="vinyl record spinning on a vintage turntable with warm incandescent lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEpJUXM8PuX7s4C9r6Aony137ZASyhXktMAouxUYbZB40Ldx39UBRZqwnP7Ty0K3uZLFsttqqz8O9osUebpx3DR6wp4a1CcIOLW_XHL_5i93qy4--bfNajqcWmdJ30HBzbcjPvwtfb1f8s56_yJ-aY6Z2DBr5molrMbfjDo3UMi78PlPvpUvzTgbjj43CYTMUGAxXtnQf3WCNphHjGd7c1UTzeHRX4XDCMU-kIz_d-pwfxuuajN1vJHKHbZChCahLIL6n-tvdCOKE"/>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-zinc-900 truncate group-hover:text-primary transition-colors">Vintage Soul</h4>
+<p class="font-label-sm text-label-sm text-zinc-600 truncate mt-xs">70s Classics • Aura</p>
+</div>
+<button class="w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-zinc-900" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar from JSON (Mobile Only per guidelines) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-4 pb-safe bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border-t border-zinc-100/50 dark:border-zinc-800/50 shadow-[0_-10px_30px_rgba(0,0,0,0.03)] docked full-width bottom-0 rounded-t-2xl">
+<!-- Home - Inactive -->
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 hover:text-zinc-600 dark:hover:text-zinc-300 active:scale-90 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight mt-1">Home</span>
+</a>
+<!-- Search - Inactive -->
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 hover:text-zinc-600 dark:hover:text-zinc-300 active:scale-90 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight mt-1">Search</span>
+</a>
+<!-- Library - Active -->
+<a class="flex flex-col items-center justify-center text-zinc-900 dark:text-zinc-50 scale-110 font-bold hover:text-zinc-600 dark:hover:text-zinc-300 active:scale-90 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">library_music</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight mt-1">Library</span>
+</a>
+<!-- Now Playing - Inactive -->
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 hover:text-zinc-600 dark:hover:text-zinc-300 active:scale-90 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight mt-1">Now Playing</span>
+</a>
+</nav>
+</body></html>
